@@ -6,7 +6,6 @@ fn no_input_no_stack() {
 }
 
 #[test]
-#[ignore]
 fn numbers_just_get_pushed_onto_the_stack() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 3 4 5").is_ok());
@@ -14,7 +13,6 @@ fn numbers_just_get_pushed_onto_the_stack() {
 }
 
 #[test]
-#[ignore]
 fn can_add_two_numbers() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 +").is_ok());
@@ -22,7 +20,6 @@ fn can_add_two_numbers() {
 }
 
 #[test]
-#[ignore]
 fn addition_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 +"));
@@ -30,7 +27,6 @@ fn addition_error() {
 }
 
 #[test]
-#[ignore]
 fn can_subtract_two_numbers() {
     let mut f = Forth::new();
     assert!(f.eval("3 4 -").is_ok());
@@ -38,7 +34,6 @@ fn can_subtract_two_numbers() {
 }
 
 #[test]
-#[ignore]
 fn subtraction_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 -"));
@@ -46,7 +41,6 @@ fn subtraction_error() {
 }
 
 #[test]
-#[ignore]
 fn can_multiply_two_numbers() {
     let mut f = Forth::new();
     assert!(f.eval("2 4 *").is_ok());
@@ -54,7 +48,6 @@ fn can_multiply_two_numbers() {
 }
 
 #[test]
-#[ignore]
 fn multiplication_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 *"));
@@ -62,7 +55,6 @@ fn multiplication_error() {
 }
 
 #[test]
-#[ignore]
 fn can_divide_two_numbers() {
     let mut f = Forth::new();
     assert!(f.eval("12 3 /").is_ok());
@@ -70,7 +62,6 @@ fn can_divide_two_numbers() {
 }
 
 #[test]
-#[ignore]
 fn performs_integer_division() {
     let mut f = Forth::new();
     assert!(f.eval("8 3 /").is_ok());
@@ -78,7 +69,6 @@ fn performs_integer_division() {
 }
 
 #[test]
-#[ignore]
 fn division_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 /"));
@@ -86,14 +76,12 @@ fn division_error() {
 }
 
 #[test]
-#[ignore]
 fn errors_if_dividing_by_zero() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::DivisionByZero), f.eval("4 0 /"));
 }
 
 #[test]
-#[ignore]
 fn addition_and_subtraction() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 + 4 -").is_ok());
@@ -101,7 +89,6 @@ fn addition_and_subtraction() {
 }
 
 #[test]
-#[ignore]
 fn multiplication_and_division() {
     let mut f = Forth::new();
     assert!(f.eval("2 4 * 3 /").is_ok());
@@ -109,7 +96,6 @@ fn multiplication_and_division() {
 }
 
 #[test]
-#[ignore]
 fn dup() {
     let mut f = Forth::new();
     assert!(f.eval("1 dup").is_ok());
@@ -117,7 +103,6 @@ fn dup() {
 }
 
 #[test]
-#[ignore]
 fn dup_top_value_only() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 dup").is_ok());
@@ -125,7 +110,6 @@ fn dup_top_value_only() {
 }
 
 #[test]
-#[ignore]
 fn dup_case_insensitive() {
     let mut f = Forth::new();
     assert!(f.eval("1 DUP Dup dup").is_ok());
@@ -133,14 +117,12 @@ fn dup_case_insensitive() {
 }
 
 #[test]
-#[ignore]
 fn dup_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("dup"));
 }
 
 #[test]
-#[ignore]
 fn drop() {
     let mut f = Forth::new();
     assert!(f.eval("1 drop").is_ok());
@@ -148,7 +130,6 @@ fn drop() {
 }
 
 #[test]
-#[ignore]
 fn drop_with_two() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 drop").is_ok());
@@ -156,7 +137,6 @@ fn drop_with_two() {
 }
 
 #[test]
-#[ignore]
 fn drop_case_insensitive() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 3 4 DROP Drop drop").is_ok());
@@ -164,14 +144,12 @@ fn drop_case_insensitive() {
 }
 
 #[test]
-#[ignore]
 fn drop_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("drop"));
 }
 
 #[test]
-#[ignore]
 fn swap() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 swap").is_ok());
@@ -179,7 +157,6 @@ fn swap() {
 }
 
 #[test]
-#[ignore]
 fn swap_with_three() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 3 swap").is_ok());
@@ -187,7 +164,6 @@ fn swap_with_three() {
 }
 
 #[test]
-#[ignore]
 fn swap_case_insensitive() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 SWAP 3 Swap 4 swap").is_ok());
@@ -195,7 +171,6 @@ fn swap_case_insensitive() {
 }
 
 #[test]
-#[ignore]
 fn swap_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 swap"));
@@ -203,7 +178,6 @@ fn swap_error() {
 }
 
 #[test]
-#[ignore]
 fn over() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 over").is_ok());
@@ -211,7 +185,6 @@ fn over() {
 }
 
 #[test]
-#[ignore]
 fn over_with_three() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 3 over").is_ok());
@@ -219,7 +192,6 @@ fn over_with_three() {
 }
 
 #[test]
-#[ignore]
 fn over_case_insensitive() {
     let mut f = Forth::new();
     assert!(f.eval("1 2 OVER Over over").is_ok());
@@ -227,7 +199,6 @@ fn over_case_insensitive() {
 }
 
 #[test]
-#[ignore]
 fn over_error() {
     let mut f = Forth::new();
     assert_eq!(Err(Error::StackUnderflow), f.eval("1 over"));
