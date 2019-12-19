@@ -62,7 +62,7 @@ impl Forth {
                         return Err(Error::StackUnderflow);
                     }
 
-                    if self.stack.clone().last().unwrap() == &0 {
+                    if self.stack.last().unwrap() == &0 {
                         return Err(Error::DivisionByZero);
                     }
 
@@ -111,9 +111,8 @@ impl Forth {
     }
 
     fn swap_stack(&mut self) -> () {
-        let mut last_two: Vec<i32> = self.stack.clone().into_iter().rev().take(2).collect();
-        self.stack.truncate(self.stack.len() - 2);
-        self.stack.append(&mut last_two);
+        let (a, b) = (self.stack.len() - 2, self.stack.len() - 1);
+        self.stack.swap(a,b);
     }
 
     fn drop_stack(&mut self) -> () {
@@ -121,9 +120,8 @@ impl Forth {
     }
 
     fn dup_stack(&mut self) -> () {
-        let stack = self.stack.clone();
-        let dup = stack.iter().last().unwrap();
-        self.stack.push(*dup);
+        let dupl = self.stack[self.stack.len() - 1];
+        self.stack.push(dupl);
     }
 
     fn sum_stack(&mut self) -> () {
